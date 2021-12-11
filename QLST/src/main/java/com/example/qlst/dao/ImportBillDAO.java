@@ -48,12 +48,15 @@ public class ImportBillDAO extends DAO{
             if (rs.next()) {
                 String date = rs.getString("date");
                 double total = rs.getDouble("total");
+                int supplierid = rs.getInt("supplierid");
                 List<ImportBillDetail> listImportBillDetail = importBillDetailDAO.getListImportBillDetail(billid);
+                Supplier supplier = supplierDAO.getSupplierByID(supplierid);
                 importBill = new ImportBill();
                 importBill.setId(billid);
                 importBill.setDate(date);
                 importBill.setListImportBillDetail(listImportBillDetail);
                 importBill.setTotal(total);
+                importBill.setSupplier(supplier);
             }
         } catch (SQLException e) {
             e.printStackTrace();
