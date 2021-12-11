@@ -1,0 +1,62 @@
+<h4 class="center">Import History Of Supplier <span style="color: blue;">{{listImportBill[0].supplier.name}}</span> From
+    <span style="color: blue;">{{from}}</span> To <span style="color: blue;">{{to}}</span>
+</h4>
+
+<h6>Supplier info</h6>
+<div class="container">
+    <div class="row" style="margin-top: 5px;">
+        <div class="col-md-2">
+            <strong>ID:</strong>
+        </div>
+        <div class="col-md-5">
+            <span>{{listImportBill[0].supplier.id}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 5px;">
+        <div class="col-md-2">
+            <strong>Name:</strong>
+        </div>
+        <div class="col-md-5">
+            <span>{{listImportBill[0].supplier.name}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 5px;">
+        <div class="col-md-2">
+            <strong>Address:</strong>
+        </div>
+        <div class="col-md-5">
+            <span>{{listImportBill[0].supplier.address}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 5px;">
+        <div class="col-md-2">
+            <strong>Phone:</strong>
+        </div>
+        <div class="col-md-5">
+            <span>{{listImportBill[0].supplier.phoneNum}}</span>
+        </div>
+    </div>
+</div>
+
+<h6 style="margin-top: 15px;">Import History</h6>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Supplier</th>
+            <th scope="col">Date</th>
+            <th scope="col">Total</th>
+            <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ss of listImportBill">
+            <td>{{ss.id}}</td>
+            <td>{{ss.supplier.name}}</td>
+            <td>{{ss.date}}</td>
+            <td style="color: #d0011b;">{{ss.total | currency: "VND"}}</td>
+            <td><a routerLink="/welcome/billdetail/{{ss.id}}">View detail</a></td>
+        </tr>
+    </tbody>
+</table>

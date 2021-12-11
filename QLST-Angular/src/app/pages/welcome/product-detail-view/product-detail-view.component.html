@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row row1">
+        <div class="col-md-6">
+            <img src="/assets/img/TV/{{product.image}}" alt="" width="100%">
+        </div>
+        <div class="col-md-6">
+            <p class="product-name">{{product.name}}</p>
+            <p class="sold">{{product.nbr_sold}} sold</p>
+            <hr>
+            <p class="price">{{product.unitPrice | currency: "VND"}}</p>
+            <span style="margin-right: 20px;">Quantity</span>
+            <button class="btnQty" (click)="decreaseQuantity()">-</button>
+            <span style="margin: 20px; font-weight: 500;">{{quantity}}</span>
+            <button class="btnQty" (click)="increaseQuantity()">+</button>
+            <p class="nbr-left">{{product.nbr_left}} left in the stock</p>
+            <button class="btn-add" (click)="addToCart()">Add to cart</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row row2">
+        <h2>Product Description</h2>
+        <p>{{product.desc}}</p>
+    </div>
+</div>

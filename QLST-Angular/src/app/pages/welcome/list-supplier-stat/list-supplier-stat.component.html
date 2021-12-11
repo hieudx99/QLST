@@ -1,0 +1,35 @@
+<h4 class="center">Supplier Statistic From <span style="color: blue;">{{from}}</span> To <span
+        style="color: blue;">{{to}}</span> </h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Import Time</th>
+            <th scope="col">Import Amount</th>
+            <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ss of listSupplierStat">
+            <td>{{ss.id}}</td>
+            <td>{{ss.name}}</td>
+            <td>{{ss.address}}</td>
+            <td>{{ss.importTime}}</td>
+            <td style="color: #d0011b;">{{ss.importAmount | currency: "VND"}}</td>
+            <td><a routerLink="/welcome/importhistory/{{ss.id}}">View detail</a></td>
+        </tr>
+    </tbody>
+</table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <strong>Total:</strong>
+        </div>
+        <div class="col-md-5">
+            <strong style="color: #d0011b; margin-left: -20px;">{{total | currency: "VND"}}</strong>
+        </div>
+    </div>
+</div>

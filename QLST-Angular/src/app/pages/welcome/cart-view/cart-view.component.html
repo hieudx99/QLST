@@ -1,0 +1,102 @@
+<div class="container container-lv1">
+    <div class="row" *ngFor="let cartItem of listCartItem">
+        <div class="container container-lv2">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="/assets/img/TV/{{cartItem.product.image}}" alt="" style="max-width: 150px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="container container-lv3">
+                        <div class="row name">{{cartItem.product.name}}</div>
+                        <div class="row sub-total">{{cartItem.total | currency: "VND"}} </div>
+                        <div class="row quantity">Số lượng: {{cartItem.quantity}}</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <i class="far fa-times-circle"></i>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div class="container total-container">
+    <div class="row">
+        <div class="col-md-6 label">
+            <span>Total: </span>
+        </div>
+        <div class="col-md-6 total">
+            <span>{{shoppingCart.total | currency: "VND"}}</span>
+        </div>
+    </div>
+</div>
+<hr>
+<p class="label-customerinfo">Customer info:</p>
+<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="form-group">
+        <input type="text" class="form-control" name="fullname" [(ngModel)]="form.fullname" required #fullname="ngModel"
+            placeholder="Fullname" />
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && fullname.invalid">
+            Name is required!
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="phoneNum" placeholder="Phone Number" [(ngModel)]="form.phoneNum"
+            #phoneNum="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && phoneNum.invalid">
+            phoneNum is required!
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="city" placeholder="City" [(ngModel)]="form.city" required
+            #city="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && city.invalid">
+            city is required!
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="district" placeholder="District" [(ngModel)]="form.district"
+            required #district="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && district.invalid">
+            district is required!
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="address" placeholder="Address" [(ngModel)]="form.address" required
+            #address="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && address.invalid">
+            address is required!
+        </div>
+    </div>
+    <div class="form-group">
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Payment Method" name="PaymentMethod"
+            [(ngModel)]="form.paymentMethod" style="width: 100%;">
+            <nz-option nzLabel="COD" nzValue="COD"></nz-option>
+            <nz-option nzLabel="Cash" nzValue="Cash"></nz-option>
+            <nz-option nzLabel="Bank Transfer" nzValue="Bank Transfer"></nz-option>
+        </nz-select>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="voucher" placeholder="voucher" [(ngModel)]="form.voucher" />
+    </div>
+
+    <hr>
+    <p class="label-freeship">freeship</p>
+    <div class="container total-container">
+        <div class="row">
+            <div class="col-md-6 label">
+                <span>Total: </span>
+            </div>
+            <div class="col-md-6 total">
+                <span>{{total | currency: "VND"}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="order">Order</button>
+    </div>
+
+
+</form>

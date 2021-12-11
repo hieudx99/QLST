@@ -1,0 +1,67 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="/welcome/">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>QLST</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+        <ul *ngIf="isLoggedIn">
+          <li nz-menu-item nzMatchRouter>
+            <a>TV</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>AC</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Phone, Tablet</a>
+          </li>
+        </ul>
+        <ul *ngIf="isManagerLoggedIn">
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="welcome/viewstathome">View Statistic</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="User" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter *ngIf="isLoggedIn">
+            <a routerLink="/welcome/profile">Profile</a>
+          </li>
+          <li nz-menu-item nzMatchRouter *ngIf="isLoggedIn || isManagerLoggedIn">
+            <a (click)="logout()">Logout</a>
+          </li>
+          <li nz-menu-item nzMatchRouter *ngIf="!isLoggedIn">
+            <a routerLink="login">Login</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+        </span>
+        <form class="d-flex" (ngSubmit)="searchProduct()" style="margin: 13px 25px" *ngIf="isLoggedIn">
+          <input class="form-control me-2" type="text" [(ngModel)]="keyword" name="keyword"
+            placeholder=" Enter product name" aria-label="Search" style="width: 200px; margin-right: 10px;">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+
+        </form>
+        <button class="btn btn-outline-success cart" type="submit" routerLink="/welcome/shoppingcart"
+          *ngIf="isLoggedIn">Go to Cart <i class="fas fa-shopping-cart"></i></button>
+      </div>
+
+    </nz-header>
+    <nz-content>
+      <div class=" inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

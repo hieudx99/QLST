@@ -1,0 +1,22 @@
+<p>Result for " <strong>{{keyword}}</strong> "</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of listProduct">
+            <td>{{product.id}}</td>
+            <td>
+                <img src="/assets/img/TV/{{product.image}}" alt="" width="100px">
+            </td>
+            <td><a (click)="setSelectedProduct(product)">{{product.name}}</a></td>
+            <td style="color: #d0011b;">{{product.unitPrice | currency: "VND"}}</td>
+        </tr>
+    </tbody>
+</table>

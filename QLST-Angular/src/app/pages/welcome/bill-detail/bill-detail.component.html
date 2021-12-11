@@ -1,0 +1,82 @@
+<p class="center">Bill Detail</p>
+
+<h6>Bill info</h6>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    <strong>Bill ID:</strong>
+                </div>
+                <div class="col-md-4">
+                    <span>{{importBill.id}}</span>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-2">
+                    <strong>Supplier:</strong>
+                </div>
+                <div class="col-md-4">
+                    <span>{{importBill.supplier.name}}</span>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    <strong>Date: </strong>
+                </div>
+                <div class="col-md-4">
+                    <span>{{importBill.date}}</span>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-2">
+                    <strong>Total: </strong>
+                </div>
+                <div class="col-md-4">
+                    <span style="color: #d0011b; font-weight: 500;">{{importBill.total | currency: "VND"}}</span>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<h6 class="" style="margin-top: 30px;">List Product</h6>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ss of importBill.listImportBillDetail">
+            <td>{{ss.id}}</td>
+            <td>{{ss.product.name}}</td>
+            <td>{{ss.quantity}}</td>
+            <td style="color: #d0011b;">{{ss.total | currency: "VND"}}</td>
+        </tr>
+    </tbody>
+</table>
